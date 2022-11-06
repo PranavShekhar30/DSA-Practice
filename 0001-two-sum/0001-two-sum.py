@@ -6,12 +6,13 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        dict = {}
+        complementMap = dict()
         
-        for i,n in enumerate(nums):
-            diff = target - n
-            if diff not in dict:
-                dict[n] = i
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            
+            if nums[i] in complementMap:
+                return [complementMap[nums[i]], i]
             else:
-                return [dict[diff], i]
+                complementMap[complement] = i
         
